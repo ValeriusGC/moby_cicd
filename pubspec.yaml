@@ -15,16 +15,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sqflite: ^0.12.2+1
-  path_provider: ^0.4.1
-  uuid: 2.0.0
-  rxdart: ^0.20.0
-  rx_command: 4.1.1
+  sqflite: ^1.1.5
+  path_provider: ^1.1.0
+  uuid: ^2.0.1
+  rxdart: ^0.22.0
+  rx_command: ^4.3.1
   rx_widgets: any
   get_it: ^1.0.3
   fluttertoast: ^3.1.0
   rflutter_alert: ^1.0.2
-  reorderables: ^0.2.6
+  #reorderables: ^0.2.6
 
 
 #  reflectable: ^2.0.10+1
