@@ -103,7 +103,7 @@ class NoteManager {
 
     searchTextChangedCmd
         // Wait for the user to stop typing for 500ms
-        .debounce(new Duration(milliseconds: 500))
+        .debounceTime(new Duration(milliseconds: 500))
         // Then call the updateWeatherCommand
         .listen((d){
       pars = pars.copyWith(

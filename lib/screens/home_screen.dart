@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mobynote/Database.dart';
 import 'package:mobynote/NoteModel.dart';
-import 'package:mobynote/app_session.dart';
-import 'package:mobynote/app_session_provider.dart';
 import 'package:mobynote/generated/i18n.dart';
 import 'package:mobynote/keys.dart';
-import 'package:mobynote/local_repo.dart';
-import 'package:mobynote/managers/home_screen_manager.dart';
 import 'package:mobynote/managers/note_manager.dart';
 import 'package:mobynote/model/vmo.dart';
 import 'package:mobynote/note_bloc.dart';
 import 'package:mobynote/note_bloc_provider.dart';
-import 'package:mobynote/note_interactor.dart';
-import 'package:mobynote/routes.dart';
 import 'package:mobynote/screens/add_screen.dart';
 import 'package:mobynote/service_locator.dart';
 import 'package:mobynote/utils/attrs.dart';
 import 'package:mobynote/utils/datetime.dart';
 import 'package:mobynote/widgets/filter_button.dart';
 import 'package:mobynote/widgets/note_item.dart';
-import 'package:mobynote/widgets/sort_button.dart';
 import 'package:rx_widgets/rx_widgets.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:reorderables/reorderables.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -1051,11 +1042,9 @@ class _ColumnExample2State extends State<ColumnExample2> {
     }
 
     Widget reorderableColumn = IntrinsicWidth(
-        child: ReorderableColumn(
-          header: Text('List-like view but supports IntrinsicWidth'),
+        child: Column(
 //        crossAxisAlignment: CrossAxisAlignment.start,
           children: _rows,
-          onReorder: _onReorder,
         ));
 
     return Transform(

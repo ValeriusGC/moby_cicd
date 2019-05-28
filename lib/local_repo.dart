@@ -22,8 +22,8 @@ class LocalRepo extends BaseNoteRepo {
   final BehaviorSubject<List<Note>> _subject;
   bool _loaded = false;
 
-  LocalRepo(this.dbProv) : this._subject = BehaviorSubject<List<Note>>(seedValue: []) {
-//    print('Mobynote.LocalRepo.LocalRepo: dbProv=$dbProv');
+  LocalRepo(this.dbProv) : this._subject = BehaviorSubject<List<Note>>() {
+    _subject.publishValueSeeded([]);
   }
 
   @override
