@@ -1,0 +1,48 @@
+matrix:
+  # This causes the build to complete immediately upon first failure or once
+  # required jobs are green.
+  fast_finish: true
+
+  include:
+  - name: Android Build
+    language: android
+    jdk: openjdk8
+    android:
+      components:
+        - build-tools-28.0.3
+        - android-28
+    before_script:
+      - git clone https://github.com/flutter/flutter.git -b stable
+      - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
+      - if [  ! -d "flutter" ] ; then git clone https://github.com/flutter/flutter.git -b beta; fi;
+    script:
+      - flutter packages get
+      - flutter test
+      - flutter build apk
+    cache:
+      bundler: true
+      directories:
+      - "$HOME/.pub-cache"
+      - "$HOME/.gradle/caches/"
+      - "$HOME/.gradle/wrapper/"
+      - "$HOME/.android/build-cache"
+      - "$HOME/flutter"
+
+  - name: iOS Build
+    os: osx
+    language: generic
+    osx_image: xcode10.2
+    before_script:
+      - git clone https://github.com/flutter/flutter.git -b stable
+      - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
+      - if [  ! -d "flutter" ] ; then git clone https://github.com/flutter/flutter.git -b beta; fi;
+    script:
+      - flutter packages get
+      - flutter test
+      - flutter build ios --no-codesign
+    cache:
+      cocoapods: true
+      bundler: true
+      directories:
+      - "$HOME/.pub-cache"
+      - "$HOME/flutter"
